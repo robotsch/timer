@@ -1,21 +1,21 @@
 const stdin = process.stdin;
 stdin.setRawMode(true);
-stdin.setEncoding('utf8');
+stdin.setEncoding("utf8");
 
-
-stdin.on('data', (key) => {
+// Code reviewed by Andy Lindsay
+stdin.on("data", (key) => {
   // Check if key pressed can be casted to a number
-  if (typeof Number(key) === 'number') {
+  if (Number(key) % 1 === 0) {
     // Beep after that number seconds
-    setTimeout(() => {key > 0 ? process.stdout.write('\x07') : null}, Number(key) * 1000)
+    return setTimeout(() => process.stdout.write("\x07"), Number(key) * 1000);
   }
   // Beep if b is pressed
-  if (key === 'b') {
-    process.stdout.write('\x07');
+  if (key === "b") {
+    return process.stdout.write("\x07");
   }
   // Exit with console.log if ctrl+c is pressed
-  if (key === '\u0003') {
-    console.log('Thanks for using me, ciao!')
+  if (key === "\u0003") {
+    console.log("Thanks for using me, ciao!");
     process.exit();
   }
 });
