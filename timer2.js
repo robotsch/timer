@@ -19,5 +19,3 @@ stdin.on('data', (key) => {
     process.exit();
   }
 });
-
-console.log('after callback');
